@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>Application: A Coding Project By Ansh Desai</title>
+    <title>Hundred: A Coding Project By Ansh Desai</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
     <!--Navigation Section-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="/img/Mark.png" class="d-inline-block align-text-top" width="30" height="24">Application</a>
+            <a class="navbar-brand" href="#"><img src="/img/Mark.png" class="d-inline-block align-text-top" width="30" height="24">Hundred</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,10 +36,10 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repository</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/AnshD8619/Hundred-Coding-Challenge">Git Repository</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">About Me</a>
+                        <a class="nav-link" target="_blank" href="PortfolioLink">About Me</a>
                     </li>
                 </ul>
             </div>
@@ -48,19 +48,74 @@
     <!--Main Section-->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">THE APPLICATION CODE</h2>
+            <h2 class="border-1 border-bottom border-dark">The Hundred Code</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            alert("ENTER PROGRAM CODE HERE");
+                            function getNumber(){
+                                let startNumber = document.getElementById("startValue").value;
+                                let endNumber = document.getElementById("endValue").value;
+                                let numbers = [];
+                                startNumber = parseInt(startNumber);
+                                endNumber = parseInt(endNumber)
+                            
+                                if(Number.isInteger(startNumber) && Number.isInteger(endNumber)){
+                                    let numbers = generateNumbers(startNumber, endNumber)
+                                    displayNumbers(numbers)
+                                }
+                                else{
+                                    alert("You must enter integers")
+                                }
+                            }
+                            
+                            function generateNumbers(sNum, eNum){
+                                let numbers = [];
+                                for(let index = sNum; index <= eNum; index++){
+                                    numbers.push(index);
+                                }
+                                return numbers;
+                            }
+                            
+                            function displayNumbers(numbers){
+                                let className = "even";
+                                let templateRows = "";
+                                for(let index = 0; index < numbers.length; index++){
+                                    let number = numbers[index];
+                                    if(number % 2 == 0){
+                                        className = "even";
+                                    }
+                                    else{
+                                        className = "odd";
+                                    }
+                                    templateRows += `<tr><td class="${className}">${number}</td></tr>`;
+                                }
+                                document.getElementById("results").innerHTML = templateRows;
+                            }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>HOW IS THE CODE STRUCTURED</p>
-                    <h5>FUNCTION NAME</h5>
-                    <p>FUNCTION DESCRIPTION</p>
+                    <h5>Code Structure</h5>
+                    
+                    <h5>getNumber()</h5>
+                    <p>This function gets the start and end values for the app. 
+                    Then, it parses the values in order to verify they are integers. 
+                    If they are, it will call the generateNumbers() and displayNumbers() functions respectively. 
+                    Otherwise, it will display an alert stating that the inputted values must be integers.</p>
+                    
+                    <h5>generateNumbers()</h5>
+                    <p>This function sets numbers as an empty list. 
+                    Afterwards, it runs a for loop from the starting to the 
+                    ending value inputted by the user. Then, it pushes the numbers 
+                    to the numbers list. When done, it returns the numbers list to the getNumber() function.</p>
+                    
+                    <h5>displayNumbers()</h5>
+                    <p>This function runs a for loop from 0 to the length of the numbers list.
+                    It then checks if the given number is even or odd, if even, it calls the class even and bolds the number, 
+                    else it sets the classname as odd. It then adds the number formatted in html to a string templateRows and 
+                    after the for loop, it adds this completed string into a table in HTML to be displayed</p>
+
                 </div>               
             </div>
         </div>
